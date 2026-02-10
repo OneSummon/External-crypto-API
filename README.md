@@ -186,7 +186,7 @@ EXT_API_COIN_ALL_INFO_URL=https://api.coingecko.com/api/v3/coins/markets
 
 👨‍💻 **Автор**
 OneSummon
-GitHub: ![OneSummon](https://github.com/OneSummon)
+GitHub: [OneSummon](https://github.com/OneSummon)
 
 🙏**Благодарности**
 ```
