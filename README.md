@@ -1,10 +1,10 @@
 📊 Крипто API с кэшированием в Redis
-```
-https://img.shields.io/badge/FastAPI-005571?style=for-square&logo=fastapi
-https://img.shields.io/badge/redis-%2523DD0031.svg?style=for-square&logo=redis&logoColor=white
-https://img.shields.io/badge/python-3670A0?style=for-square&logo=python&logoColor=ffdd54
-https://img.shields.io/badge/github-%2523121011.svg?style=for-square&logo=github&logoColor=white
-```
+
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-square&logo=fastapi)
+![Redis](https://img.shields.io/badge/redis-%2523DD0031.svg?style=for-square&logo=redis&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-square&logo=python&logoColor=ffdd54)
+![1](https://img.shields.io/badge/github-%2523121011.svg?style=for-square&logo=github&logoColor=white)
+
 
 Высокопроизводительный сервис API для получения данных о криптовалютах со встроенным кэшированием в Redis и ограничением запросов.
 
