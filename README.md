@@ -3,8 +3,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-square&logo=fastapi)
 ![Redis](https://img.shields.io/badge/redis-%2523DD0031.svg?style=for-square&logo=redis&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-square&logo=python&logoColor=ffdd54)
-![1](https://img.shields.io/badge/github-%2523121011.svg?style=for-square&logo=github&logoColor=white)
-
+![Github](https://img.shields.io/badge/github-%2523121011.svg?style=for-square&logo=github&logoColor=white)
 
 Высокопроизводительный сервис API для получения данных о криптовалютах со встроенным кэшированием в Redis и ограничением запросов.
 
@@ -27,3 +26,46 @@ Python 3.8+
 Redis сервер
 ```
 
+Установка
+```
+Клонируйте репозиторий
+
+bash
+git clone https://github.com/YOUR_USERNAME/crypto-api.git
+cd crypto-api
+Создайте виртуальное окружение
+
+bash
+python -m venv venv
+source venv/bin/activate  # На Windows: venv\Scripts\activate
+Установите зависимости
+
+bash
+pip install fastapi uvicorn redis httpx python-dotenv
+# Или используйте requirements.txt
+Настройте окружение
+
+bash
+# Создайте файл .env на основе примера
+echo "REDIS_URL=redis://localhost:6379" > .env
+echo "CACHE_TTL=60" >> .env
+echo "MAX_REQUESTS_PER_MINUTE=100" >> .env
+Запустите Redis
+
+bash
+# macOS
+brew install redis
+brew services start redis
+
+# Ubuntu/Debian
+sudo apt install redis-server
+sudo systemctl start redis
+
+# Windows (используя WSL2)
+sudo service redis-server start
+Запустите приложение
+
+bash
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+API будет доступен по адресу http://localhost:8000
