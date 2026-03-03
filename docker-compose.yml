@@ -1,0 +1,36 @@
+services:
+
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 5
+    restart: unless-stopped
+  
+  app:
+    build: .
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - CACHE_TTL=60
+      - EXT_API_PRICE_URL=https://api.coingecko.com/api/v3/simple/price
+      - EXT_API_SYMBOLS_URL=https://api.coingecko.com/api/v3/simple/supported_vs_currencies
+      - EXT_API_COIN_ALL_INFO_URL=https://api.coingecko.com/api/v3/coins/markets
+      - MAX_REQUESTS_PER_MINUTE=100
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+
+volumes:
+  redis-data:
+    driver: local

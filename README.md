@@ -35,11 +35,35 @@ Redis сервер
 
 Установка
 ```
-Клонируйте репозиторий
+Вариант 1. Docker Compose
+
+# Клонируем репозиторий
+
+git clone https://github.com/OneSummon/External-crypto-API.git
+cd External-crypto-API
+
+# Создайте и настройте файл config.py в папке core на основе примера
+
+REDIS_URL = "redis://redis:6379"
+CACHE_TTL = seconds
+
+EXT_API_PRICE_URL = "https://api.coingecko.com/api/v3/simple/price"
+EXT_API_SYMBOLS_URL = "https://api.coingecko.com/api/v3/simple/supported_vs_currencies"
+EXT_API_COIN_ALL_INFO_URL = "https://api.coingecko.com/api/v3/coins/markets"
+
+MAX_REQUESTS_PER_MINUTE = count
+
+# запуск
+
+sudo docker-compose up --build
+
+API будет доступен по адресу http://localhost:8000
+
+Вариант 2. Клонируйте репозиторий
 
 bash
-git clone https://github.com/YOUR_USERNAME/crypto-api.git
-cd crypto-api
+git clone https://github.com/OneSummon/External-crypto-API.git
+cd External-crypto-API
 Создайте виртуальное окружение
 
 bash
@@ -53,10 +77,16 @@ pip install fastapi uvicorn redis httpx python-dotenv
 Настройте окружение
 
 bash
-# Создайте файл .env на основе примера
-echo "REDIS_URL=redis://localhost:6379" > .env
-echo "CACHE_TTL=60" >> .env
-echo "MAX_REQUESTS_PER_MINUTE=100" >> .env
+# Создайте и настройте файл config.py в папке core на основе примера
+REDIS_URL = "redis://redis:6379"
+CACHE_TTL = seconds
+
+EXT_API_PRICE_URL = "https://api.coingecko.com/api/v3/simple/price"
+EXT_API_SYMBOLS_URL = "https://api.coingecko.com/api/v3/simple/supported_vs_currencies"
+EXT_API_COIN_ALL_INFO_URL = "https://api.coingecko.com/api/v3/coins/markets"
+
+MAX_REQUESTS_PER_MINUTE = count
+
 Запустите Redis
 
 bash
@@ -84,7 +114,6 @@ Swagger UI: http://localhost:8000/docs
 
 ReDoc: http://localhost:8000/redoc
 
-Веб-интерфейс: откройте frontend.html в браузере
 ```
 **Эндпоинты API**
 
